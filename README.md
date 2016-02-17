@@ -1,4 +1,4 @@
-La aplicación corresponde a un programa de televisión tipo reality show de Canal 9 TV Argentina
+La aplicación corresponde a un programa de televisión tipo reality show de Canal 9 TV Argentina a solicitud de la Agencia Ned www.ned.cl
 
 Desarrollo de aplicativo móvil en phonegap+jquerymovil.
 
