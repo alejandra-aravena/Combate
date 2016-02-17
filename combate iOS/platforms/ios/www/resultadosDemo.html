@@ -56,9 +56,9 @@
             
     		<div data-id="footer1" id="footer1" data-role="footer" data-position="fixed">
                 <div id="footer2">
-                    <a href="votaciones.html" title="Votaciones" class="btn-vota" data-ajax="false">Votaciones</a>
+                    <a href="votacionesDemo.html" title="Votaciones" class="btn-vota" data-ajax="false">Votaciones</a>
                     <a href="" title="Resultados" class="btn-resultadosH btn-hover" id="btn-resultados" data-ajax="false">Resultados</a>
-                    <a href="historial.html" title="Historial" class="btn-historial" data-ajax="false">Historial</a>
+                    <a href="historialDemo.html" title="Historial" class="btn-historial" data-ajax="false">Historial</a>
                 </div>
                 
             	<a id="triangulitos" href="" class="ui-btn-left" data-role="none"></a>
@@ -74,10 +74,10 @@
                     <a href="index.html" title="Inicio" class="btn-inicio" data-ajax="false">Inicio</a>
                     <br />
                     <a href="programa.html" title="Programa" class="btn-programa" data-ajax="false">Programa</a>
-                    <a href="videos.html" title="Videos" class="btn-videos" data-ajax="false">Videos</a>
-                    <a href="des_tw.html" title="Destacados Twitter" class="btn-tw" data-ajax="false">Canal TW</a>
-                    <br /> <a href="des_fb.html" title="Destacados Facebook" class="btn-fb" data-ajax="false">Canal FB</a>
-                    <a href="votaciones.html" title="Votaciones" class="btn-votaciones" data-ajax="false">Votaciones</a>
+                    <a href="videosDemo.html" title="Videos" class="btn-videos" data-ajax="false">Videos</a>
+                    <a href="des_twDemo.html" title="Destacados Twitter" class="btn-tw" data-ajax="false">Canal TW</a>
+                    <br /> <a href="des_fbDemo.html" title="Destacados Facebook" class="btn-fb" data-ajax="false">Canal FB</a>
+                    <a href="votacionesDemo.html" title="Votaciones" class="btn-votaciones" data-ajax="false">Votaciones</a>
                     <a href="acerca_de.html" title="Acerca de" class="btn-acerca" data-ajax="false">Acerca de</a>
                 </div>
                 
@@ -92,47 +92,31 @@
 			document.addEventListener("deviceReady", deviceReady, false);
             
             function deviceReady() {
-				checkConnection();
             }
 			
-			function checkConnection() {
-				var networkState = navigator.network.connection.type;
-				
-				if (networkState != Connection.NONE) {
-                	traerEncuesta()
-				} else {
-					navigator.notification.alert(
-						'Sin conexión a internet',
-						 null,      
-						'Error de Conexión',
-						'Aceptar'
-					);
-				}
-			}
-        
-        	function traerEncuesta() {
 	            //DETALLE ENCUESTA
 				var idp = window.location.search;
 				idp = idp.replace("?id=","");
-				$('#btn-resultados').attr('href','resultados.html?id='+idp);
+				$('#btn-resultados').attr('href','resultadosDemo.html?id='+idp);
 				
-        	    var post_data= {user_id: '23', access_token: 'b86f6d689f3c7b0f4a9a6ce425141324'};
-				var urlEnc = 'http://54.186.84.166/ajax/getEncuestaJson/'+idp;
-            	$.ajax({
-                   url			: urlEnc,
-                   type			: 'POST',
-                   crossDomain	: true,
-                   beforeSend 	: function() {$.mobile.loading('show')},
-                   complete   	: function() {$.mobile.loading('hide')},
-                   data			: post_data,
-                   dataType		: 'json',
-                   error		: function(jqXHR,text_status,strError){navigator.notification.alert('Problemas al conectar, vuelva a intentarlo', null, 'Error de Conexión', 'Aceptar')},
-                   timeout		: 60000,
-                   success		: function(data){
+				var idPl= idp-1
+				
+				var preguntas = new Array(5)
+				preguntas[0] = new Array('1','¿Que equipo gana el desafío de hoy?','Verde','Rojo')
+				preguntas[1] = new Array('2','¿Que tipo de prueba te gustaría para el proximo desafío','Velocidad','Resistencia')
+				preguntas[2] = new Array('3','¿Aportan mas los entrenadores o los capitanes?','Entrenadores','Capitanes')
+				preguntas[3] = new Array('4','¿Quien crees que será eliminado hoy?','Gonzalo','Andrea')
+				preguntas[4] = new Array('5','¿Te gustaría que Alfredo vuelva a su equipo?','Si','No')
+				
+				var setP = preguntas[idPl];
+	
+				var aleatorio1 = (3 * Math.round(Math.random()*30)) + 1;
+				var aleatorio2 = (2 * Math.round(Math.random()*40)) + 1;
+	
 					   
-					   var total = data[0].n + data[1].n;
-					   var op1 = data[0].n*100/total;
-					   var op2 = data[1].n*100/total;
+					   var total = aleatorio1 + aleatorio2;
+					   var op1 = aleatorio1*100/total;
+					   var op2 = aleatorio2*100/total;
 					   
 					   if (op1 > op2) {
 						   $('#copa1').show();
@@ -140,13 +124,11 @@
 						   $('#copa2').show();
 					   }
 					   
-					   $('#opcion1Act').html(data[0].name+'<br />'+ op1.toFixed(0) +'%');
-					   $('#opcion2Act').html(data[1].name+'<br />'+ op2.toFixed(0) +'%');
+					   $('#opcion1Act').html(setP[2]+'<br />'+ op1.toFixed(0) +'%');
+					   $('#opcion2Act').html(setP[3]+'<br />'+ op2.toFixed(0) +'%');
 					   
-                       $('#preguntaAct').text(data[0].p);
-                   }
-				});
-        	}
+                       $('#preguntaAct').text(setP[1]);
+
 
             </script>
     </body>

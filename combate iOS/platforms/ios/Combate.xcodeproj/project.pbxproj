@@ -437,7 +437,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 510;
+				LastUpgradeCheck = 0720;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 42HHE25ZD2;
@@ -641,6 +641,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = cl.ned.combate;
 				PRODUCT_NAME = Combate;
 				PROVISIONING_PROFILE = "BC4BDC7E-ACF2-4A60-A507-877E16DAB171";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -680,6 +681,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = cl.ned.combate;
 				PRODUCT_NAME = Combate;
 				PROVISIONING_PROFILE = "BC4BDC7E-ACF2-4A60-A507-877E16DAB171";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -698,6 +700,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";

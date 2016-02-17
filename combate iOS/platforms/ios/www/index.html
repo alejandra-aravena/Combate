@@ -57,11 +57,10 @@
                     <a href="index.html" title="Inicio" class="btn-inicio" data-ajax="false">Inicio</a>
                     <br />
                     <a href="programa.html" title="Programa" class="btn-programa" data-ajax="false">Programa</a>
-                    <a href="videos.html" title="Videos" class="btn-videos" data-ajax="false">Videos</a>
-                    <a href="des_tw.html" title="Destacados Twitter" class="btn-tw" data-ajax="false">Canal TW</a>
-                    <br />
-                    <a href="des_fb.html" title="Destacados Facebook" class="btn-fb" data-ajax="false">Canal FB</a>
-                    <a href="votaciones.html" title="Votaciones" class="btn-votaciones" data-ajax="false">Votaciones</a>
+                    <a href="videosDemo.html" title="Videos" class="btn-videos" data-ajax="false">Videos</a>
+                    <a href="des_twDemo.html" title="Destacados Twitter" class="btn-tw" data-ajax="false">Canal TW</a>
+                    <br /> <a href="des_fbDemo.html" title="Destacados Facebook" class="btn-fb" data-ajax="false">Canal FB</a>
+                    <a href="votacionesDemo.html" title="Votaciones" class="btn-votaciones" data-ajax="false">Votaciones</a>
                     <a href="acerca_de.html" title="Acerca de" class="btn-acerca" data-ajax="false">Acerca de</a>
                 </div>
         	</div>
@@ -208,14 +207,19 @@
         }
         
         document.addEventListener('deviceready', onDeviceReady, true);
+		
+		//DEMO
+		traerFotos2()
+        traerInicio2()
         
         function checkConnection() {
             var networkState = navigator.network.connection.type;
             
             if (networkState != Connection.NONE) {
-                $('#owl-inicio').empty();
-                traerFotos()
-                traerInicio()
+				//DEMO
+               // $('#owl-inicio').empty();
+                //traerFotos()
+                //traerInicio()
             } else {
                 navigator.notification.alert(
                                              'Sin conexión a internet',
@@ -235,7 +239,53 @@
             }
         }
         
-        function traerFotos(){
+		//DEMO
+        function traerFotos2(){
+            
+                   
+                   $("#owl-inicio").owlCarousel({
+                                                autoPlay: 2000,
+                                                navigation : false,
+                                                slideSpeed : 300,
+                                                paginationSpeed : 400,
+                                                singleItem:true,
+                                                pagination: false
+                                                });
+        }
+        
+        function traerInicio2() {
+
+                          var parrafo = $('<p></p>')
+                          .addClass('entrada')
+                          .append($('<img />').attr('src', 'img/demo/combateW.png'))
+                          .append($('<div></div>').addClass('twitter'))
+                          .append($('<span></span>').addClass('nombreUsr').text('@combatearg'))
+                          .append("<a href='#' >Hoy dia de votaciones!</a>")
+                          
+                          $('#postInicio').append(parrafo);
+                          
+                    var parrafo3 = $('<p></p>')
+                          .addClass('entrada')
+                          .append($('<img />').attr('src', 'img/fb/avatar@2x.png'))
+                          .append($('<div></div>').addClass('facebook'))
+                          .append($('<span></span>').addClass('nombreUsr').text('Combate Oficial:'))
+                          .append("<a href='#' >Prepararse para una nueva votación!!!</a>")
+						  
+                          $('#postInicio').append(parrafo3);
+                          
+                          var parrafo2 = $('<p></p>')
+                          .addClass('entrada')
+                          .append($('<img />').attr('src', 'img/fb/avatarFB@2x.png'))
+                          .append($('<div></div>').addClass('facebook'))
+                          .append($('<span></span>').addClass('nombreUsr').text('Persona:'))
+                          .append("<a href='#' >Vamos equipo Rojo</a>")
+						  
+                          $('#postInicio').append(parrafo2);
+ 
+                   
+        }
+	
+	function traerFotos(){
             
             var post_data = {token: '18bbe012cd0fb09010b610205a14b7ac'};
             $.ajax({
@@ -345,7 +395,8 @@
 				   }
                    });
                    
-        }
+        }	
+		
         
         
             </script>
