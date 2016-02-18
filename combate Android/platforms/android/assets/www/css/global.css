@@ -292,6 +292,7 @@ p.centrado {
 	color: #FFF;
 	text-shadow: none;
 	font-weight: normal;
+	text-decoration: none;
 }
 
 .entrada a.usrTuiter,
@@ -481,6 +482,7 @@ p.centrado {
 	color: #FFF;
 	text-shadow: none;
 	font-weight: normal;
+	text-decoration: none;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
@@ -559,7 +561,7 @@ p#distancia {
 }
 .contDestacadoP .conDer {
 	float: right;
-	width: 70%;
+	width: 68%;
 	height: auto;
 	margin-top: 2px;
     margin-left: 3px;
